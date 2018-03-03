@@ -40,6 +40,13 @@
                     "name": "x2goserver", 
                     "allow_unauthenticated": "yes"
                 }
+            }, 
+            {
+                "name": "install mate-session-manager",
+                "apt": {
+                    "name": "mate-session-manager", 
+                    "allow_unauthenticated": "yes"
+                }
             }
         ]
     }
