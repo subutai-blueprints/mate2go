@@ -9,7 +9,8 @@
                     "name": "x2go",
                     "comment": "X2GO User", 
                     "group": "users", 
-                    "generate_ssh_key": "yes"
+                    "generate_ssh_key": "yes", 
+                    "shell": "/bin/bash"
                 }
             }, 
             {
@@ -46,6 +47,43 @@
                 "apt": {
                     "name": "mate-session-manager", 
                     "allow_unauthenticated": "yes"
+                }
+            }, 
+            {
+                "name": "install mate-applets",
+                "apt": {
+                    "name": "mate-applets", 
+                    "allow_unauthenticated": "yes"
+                }
+            }, 
+            {
+                "name": "install mate-backgrounds",
+                "apt": {
+                    "name": "mate-backgrounds", 
+                    "allow_unauthenticated": "yes"
+                }
+            }, 
+            {
+                "name": "install mate-control-center",
+                "apt": {
+                    "name": "mate-control-center", 
+                    "allow_unauthenticated": "yes"
+                }
+            }, 
+            {
+                "name": "install mate-desktop-environment",
+                "apt": {
+                    "name": "mate-desktop-environment", 
+                    "allow_unauthenticated": "yes"
+                }
+            }, 
+            {
+                "name": "copy wallpaper.jpg",
+                "copy": {
+                    "src": "./files/wallpaper.jpg",
+                    "dest": "/home/x2go/Pictures", 
+                    "owner": "x2go", 
+                    "group": "users"
                 }
             }
         ]
