@@ -85,6 +85,13 @@
                 }
             }, 
             {
+                "name": "install dconf-cli",
+                "apt": {
+                    "name": "dconf-cli", 
+                    "allow_unauthenticated": "yes"
+                }
+            }, 
+            {
                 "name": "copy wallpaper.jpg",
                 "copy": {
                     "src": "./files/wallpaper.jpg",
