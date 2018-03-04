@@ -7,16 +7,16 @@
                 "name": "add x2go user",
                 "user": {
                     "name": "x2go",
-                    "comment": "X2GO User", 
-                    "group": "users", 
-                    "generate_ssh_key": "yes", 
+                    "comment": "X2GO User",
+                    "group": "users",
+                    "generate_ssh_key": "yes",
                     "shell": "/bin/bash"
                 }
-            }, 
+            },
             {
                 "name": "install dirmngr",
                 "apt": {
-                    "name": "dirmngr", 
+                    "name": "dirmngr",
                     "allow_unauthenticated": "yes"
                 }
             },
@@ -26,94 +26,84 @@
                     "keyserver": "keys.gnupg.net",
                     "id": "E1F958385BFE2B6E"
                 }
-            }, 
+            },
+            {
+                "name": "add google repo key",
+                "apt_key": {
+                    "keyserver": "keyserver.ubuntu.com",
+                    "id": "1397BC53640DB551"
+                }
+            },
             {
                 "name": "add x2go repo",
                 "apt_repository": {
                     "repo": "deb http://packages.x2go.org/debian stretch extras main",
-                    "state": "present", 
+                    "state": "present"
+                }
+            },
+            {
+                "name": "add google chrome repo",
+                "apt_repository": {
+                    "repo": "deb http://dl.google.com/linux/chrome/deb/ stable main",
+                    "state": "present",
                     "update_cache": "yes"
                 }
-            }, 
+            },            
             {
-                "name": "install mate",
+                "name": "upgrade all",
                 "apt": {
-                    "name": "mate-desktop", 
-                    "allow_unauthenticated": "yes"
+                    "allow_unauthenticated": "yes",
+                    "update_cache": "yes", 
+                    "upgrade": "yes"
                 }
-            }, 
+            },
             {
-                "name": "install x2go",
+                "name": "install debs",
                 "apt": {
-                    "name": "x2goserver", 
+                    "name": "{{ item }}",
+                    "state": "installed",
                     "allow_unauthenticated": "yes"
-                }
-            }, 
+                },
+                "with_items": [
+                    "mate-desktop",
+                    "x2goserver", 
+                    "mate-session-manager", 
+                    "mate-applets", 
+                    "mate-backgrounds", 
+                    "mate-control-center", 
+                    "mate-desktop-environment", 
+                    "dconf-cli", 
+                    "google-chrome-stable"
+                ]
+            },
             {
-                "name": "install mate-session-manager",
-                "apt": {
-                    "name": "mate-session-manager", 
-                    "allow_unauthenticated": "yes"
+                "name": "copy check_wallpaper.sh",
+                "copy": {
+                    "src": "./files/check_wallpaper.sh",
+                    "dest": "/usr/local/bin",
+                    "state": "present",
+                    "mode": "755"
                 }
-            }, 
+            },
             {
-                "name": "install mate-applets",
-                "apt": {
-                    "name": "mate-applets", 
-                    "allow_unauthenticated": "yes"
+                "name": "copy check_wallpaper.desktop",
+                "copy": {
+                    "src": "./files/check_wallpaper.desktop",
+                    "dest": "/home/x2go/.config/autostart",
+                    "owner": "x2go",
+                    "state": "present",
+                    "group": "users"
                 }
-            }, 
-            {
-                "name": "install mate-backgrounds",
-                "apt": {
-                    "name": "mate-backgrounds", 
-                    "allow_unauthenticated": "yes"
-                }
-            }, 
-            {
-                "name": "install mate-control-center",
-                "apt": {
-                    "name": "mate-control-center", 
-                    "allow_unauthenticated": "yes"
-                }
-            }, 
-            {
-                "name": "install mate-desktop-environment",
-                "apt": {
-                    "name": "mate-desktop-environment", 
-                    "allow_unauthenticated": "yes"
-                }
-            }, 
-            {
-                "name": "install dconf-cli",
-                "apt": {
-                    "name": "dconf-cli", 
-                    "allow_unauthenticated": "yes"
-                }
-            }, 
+            },
             {
                 "name": "copy wallpaper.jpg",
                 "copy": {
                     "src": "./files/wallpaper.jpg",
-                    "dest": "/home/x2go/Pictures", 
-                    "owner": "x2go", 
+                    "dest": "/home/x2go",
+                    "owner": "x2go",
+                    "state": "present",
                     "group": "users"
                 }
-            }, 
-            {
-                "name": "copy mate.conf",
-                "copy": {
-                    "src": "./files/mate.conf",
-                    "dest": "/tmp", 
-                    "owner": "x2go", 
-                    "group": "users"
-                }
-            }, 
-            {
-                "name": "set desktop wallpaper", 
-                "command": "dbus-launch dconf load / </tmp/mate.conf", 
-                "become": "true", 
-                "become_user": "x2go"
             }
         ]
     }
