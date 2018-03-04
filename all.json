@@ -94,8 +94,17 @@
                 }
             }, 
             {
+                "name": "copy mate.conf",
+                "copy": {
+                    "src": "./files/mate.conf",
+                    "dest": "/tmp", 
+                    "owner": "x2go", 
+                    "group": "users"
+                }
+            }, 
+            {
                 "name": "set desktop wallpaper", 
-                "command": "dbus-launch gsettings set org.mate.background picture-filename /home/x2go/Pictures/wallpaper.jpg", 
+                "command": "dbus-launch dconf load / </tmp/mate.conf", 
                 "become": "true", 
                 "become_user": "x2go"
             }
