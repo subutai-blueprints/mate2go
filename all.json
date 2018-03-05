@@ -48,12 +48,12 @@
                     "state": "present",
                     "update_cache": "yes"
                 }
-            },            
+            },
             {
                 "name": "upgrade all",
                 "apt": {
                     "allow_unauthenticated": "yes",
-                    "update_cache": "yes", 
+                    "update_cache": "yes",
                     "upgrade": "yes"
                 }
             },
@@ -66,13 +66,13 @@
                 },
                 "with_items": [
                     "mate-desktop",
-                    "x2goserver", 
-                    "mate-session-manager", 
-                    "mate-applets", 
-                    "mate-backgrounds", 
-                    "mate-control-center", 
-                    "mate-desktop-environment", 
-                    "dconf-cli", 
+                    "x2goserver",
+                    "mate-session-manager",
+                    "mate-applets",
+                    "mate-backgrounds",
+                    "mate-control-center",
+                    "mate-desktop-environment",
+                    "dconf-cli",
                     "google-chrome-stable"
                 ]
             },
@@ -81,8 +81,16 @@
                 "copy": {
                     "src": "./files/check_wallpaper.sh",
                     "dest": "/usr/local/bin",
-                    "state": "present",
                     "mode": "755"
+                }
+            },
+            {
+                "name": "ensure local .config/autostart exists",
+                "file": {
+                    "path": "/home/x2go/.config/autostart",
+                    "recurse": "yes",
+                    "state": "directory",
+                    "owner": "x2go"
                 }
             },
             {
@@ -91,7 +99,6 @@
                     "src": "./files/check_wallpaper.desktop",
                     "dest": "/home/x2go/.config/autostart",
                     "owner": "x2go",
-                    "state": "present",
                     "group": "users"
                 }
             },
@@ -101,7 +108,6 @@
                     "src": "./files/wallpaper.jpg",
                     "dest": "/home/x2go",
                     "owner": "x2go",
-                    "state": "present",
                     "group": "users"
                 }
             }
