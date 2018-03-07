@@ -28,25 +28,10 @@
                 }
             },
             {
-                "name": "add google repo key",
-                "apt_key": {
-                    "keyserver": "keyserver.ubuntu.com",
-                    "id": "1397BC53640DB551"
-                }
-            },
-            {
                 "name": "add x2go repo",
                 "apt_repository": {
                     "repo": "deb http://packages.x2go.org/debian stretch extras main",
                     "state": "present"
-                }
-            },
-            {
-                "name": "add google chrome repo",
-                "apt_repository": {
-                    "repo": "deb http://dl.google.com/linux/chrome/deb/ stable main",
-                    "state": "present",
-                    "update_cache": "yes"
                 }
             },
             {
@@ -58,23 +43,85 @@
                 }
             },
             {
-                "name": "install debs",
+                "name": "install mate-desktop", 
                 "apt": {
-                    "name": "{{ item }}",
-                    "state": "installed",
-                    "allow_unauthenticated": "yes"
-                },
-                "with_items": [
-                    "mate-desktop",
-                    "x2goserver",
-                    "mate-session-manager",
-                    "mate-applets",
-                    "mate-backgrounds",
-                    "mate-control-center",
-                    "mate-desktop-environment",
-                    "dconf-cli",
-                    "google-chrome-stable"
-                ]
+                    "name": "mate-desktop", 
+                    "state": "installed", 
+                    "allow_unauthenticated": "yes", 
+                    "update_cache": "no"
+                }
+            },
+            {
+                "name": "install x2goserver", 
+                "apt": {
+                    "name": "x2goserver", 
+                    "state": "installed", 
+                    "allow_unauthenticated": "yes", 
+                    "update_cache": "no"
+                }
+            },
+            {
+                "name": "install mate-session-manager", 
+                "apt": {
+                    "name": "mate-session-manager", 
+                    "state": "installed", 
+                    "allow_unauthenticated": "yes", 
+                    "update_cache": "no"
+                }
+            },
+            {
+                "name": "install mate-applets", 
+                "apt": {
+                    "name": "mate-applets", 
+                    "state": "installed", 
+                    "allow_unauthenticated": "yes", 
+                    "update_cache": "no"
+                }
+            },
+            {
+                "name": "install mate-backgrounds", 
+                "apt": {
+                    "name": "mate-backgrounds", 
+                    "state": "installed", 
+                    "allow_unauthenticated": "yes", 
+                    "update_cache": "no"
+                }
+            },
+            {
+                "name": "install mate-control-center", 
+                "apt": {
+                    "name": "mate-control-center", 
+                    "state": "installed", 
+                    "allow_unauthenticated": "yes", 
+                    "update_cache": "no"
+                }
+            },
+            {
+                "name": "install mate-desktop-environment", 
+                "apt": {
+                    "name": "mate-desktop-environment", 
+                    "state": "installed", 
+                    "allow_unauthenticated": "yes", 
+                    "update_cache": "no"
+                }
+            },
+            {
+                "name": "install dconf-cli", 
+                "apt": {
+                    "name": "dconf-cli", 
+                    "state": "installed", 
+                    "allow_unauthenticated": "yes", 
+                    "update_cache": "no"
+                }
+            },
+            {
+                "name": "install firefox-esr", 
+                "apt": {
+                    "name": "firefox-esr", 
+                    "state": "installed", 
+                    "allow_unauthenticated": "yes", 
+                    "update_cache": "no"
+                }
             },
             {
                 "name": "copy check_wallpaper.sh",
