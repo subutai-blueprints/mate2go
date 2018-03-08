@@ -1,5 +1,0 @@
-
-mate ansible_port=10004 ansible_host=10.242.251.1
-
-[mate]
-mate
