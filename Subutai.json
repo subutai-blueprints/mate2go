@@ -6,7 +6,7 @@
     "ssh-key": "lth",
     "containers": [
         {
-            "hostname": "mate",
+            "hostname": "${hostname}",
             "template": "debian-stretch",
             "peer-criteria": "MATE-GROUP",
             "size": "${containerSize}"
@@ -25,7 +25,7 @@
             {
                 "name": "mate",
                 "hostnames": [
-                    "mate"
+                    "${hostname}"
                 ]
             }
         ]
@@ -42,6 +42,12 @@
             "type": "enum",
             "default": "MEDIUM",
             "validation": "MEDIUM,LARGE,HUGE"
-        }
+        },
+        "hostname": {
+            "description": "Enter the container's hostname",
+            "type": "string",
+            "default": "mate2go",
+            "validation": "[a-zA-Z0-9]+"
+        },
     }
 }
